@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechStore — Kasir</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ══════════════ HEADER ══════════════ -->
+  <header class="site-header">
+    <div class="header-left">
+      <img src="assets/logo.png" alt="TechStore Logo" class="header-logo">
+    </div>
+    <div class="header-center">
+      <span class="header-title">SISTEM KASIR</span>
+    </div>
+    <div class="header-right">
+      <div class="clock-block">
+        <span id="clock" class="clock-time">--:--:--</span>
+        <span id="date" class="clock-date">---</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ MAIN LAYOUT ══════════════ -->
+  <main class="main-layout">
+
+    <!-- ── LEFT COLUMN ── -->
+    <div class="col-left">
+
+      <!-- Input Barang -->
+      <section class="card" id="card-input">
+        <div class="card-header">
+          <span class="indicator cyan"></span>
+          <span>INPUT BARANG</span>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="field full-width">
+              <label for="inpNama">Nama Barang</label>
+              <input
+                type="text"
+                id="inpNama"
+                placeholder="Contoh: Laptop ASUS VivoBook 14"
+                autocomplete="off"
+              >
+            </div>
+            <div class="field">
+              <label for="inpHarga">Harga Satuan (Rp)</label>
+              <input
+                type="number"
+                id="inpHarga"
+                placeholder="0"
+                min="0"
+              >
+            </div>
+            <div class="field">
+              <label for="inpQty">Jumlah (Qty)</label>
+              <input
+                type="number"
+                id="inpQty"
+                placeholder="1"
+                min="1"
+                value="1"
+              >
+            </div>
+            <div class="field align-bottom">
+              <button class="btn btn-primary" id="btnTambah">
+                <span class="btn-icon">+</span> Tambah Item
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Keranjang Belanja -->
+      <section class="card" id="card-cart">
+        <div class="card-header">
+          <span class="indicator purple"></span>
+          <span>KERANJANG BELANJA</span>
+          <img src="assets/icon-cart.svg" alt="cart" class="header-icon">
+          <span class="badge" id="badgeCount">0</span>
+        </div>
+        <div class="card-body no-pad">
+          <div class="table-scroll">
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th class="th-no">#</th>
+                  <th class="th-name">Nama Barang</th>
+                  <th class="th-qty">Qty</th>
+                  <th class="th-price">Harga Satuan</th>
+                  <th class="th-sub">Subtotal</th>
+                  <th class="th-del"></th>
+                </tr>
+              </thead>
+              <tbody id="cartBody">
+                <tr class="empty-row">
+                  <td colspan="6">
+                    <div class="empty-state">
+                      <img src="assets/icon-cart.svg" alt="" class="empty-icon">
+                      <p>Keranjang masih kosong</p>
+                      <small>Tambahkan barang di form atas</small>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /col-left -->
+
+    <!-- ── RIGHT COLUMN ── -->
+    <div class="col-right">
+      <section class="card" id="card-summary">
+        <div class="card-header">
+          <span class="indicator orange"></span>
+          <span>RINGKASAN TRANSAKSI</span>
+        </div>
+        <div class="card-body">
+
+          <!-- Summary -->
+          <div class="summary-block">
+            <div class="summary-row">
+              <span class="s-label">Total Jenis Barang</span>
+              <span class="s-val" id="sumItems">0 item</span>
+            </div>
+            <div class="summary-row">
+              <span class="s-label">Total Qty</span>
+              <span class="s-val" id="sumQty">0 pcs</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-row total-row">
+              <span>TOTAL BELANJA</span>
+              <span id="sumTotal">Rp 0</span>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="payment-block">
+            <div class="field">
+              <label for="inpBayar">Uang Bayar (Rp)</label>
+              <input
+                type="number"
+                id="inpBayar"
+                placeholder="Masukkan nominal..."
+                min="0"
+              >
+            </div>
+
+            <div class="kembalian-box" id="kembalianBox">
+              <div class="kembalian-label" id="kembalianLabel">Kembalian</div>
+              <div class="kembalian-val" id="kembalianVal">Rp 0</div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="action-block">
+            <button class="btn btn-success" id="btnCetak">
+              🧾 &nbsp;Cetak Struk
+            </button>
+            <button class="btn btn-outline" id="btnReset">
+              ↺ &nbsp;Reset Transaksi
+            </button>
+          </div>
+
+        </div>
+      </section>
+    </div><!-- /col-right -->
+
+  </main>
+
+  <!-- ══════════════ MODAL STRUK ══════════════ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <div id="strukContent">
+        <!-- Filled by JS -->
+      </div>
+      <div class="modal-actions">
+        <button class="btn-print" id="btnPrint">🖨 &nbsp;Print Struk</button>
+        <button class="btn-close" id="btnCloseModal">✕ &nbsp;Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ TOAST ══════════════ -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
