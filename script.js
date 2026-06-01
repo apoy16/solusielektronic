@@ -1,3 +1,19 @@
+const daftarStokBarang = [
+    { nama: "Laptop ASUS VivoBook 14", harga: 7500000, stok: 10 },
+    { nama: "Mouse Wireless Logi", harga: 150000, stok: 25 },
+    { nama: "Keyboard Mechanical", harga: 450000, stok: 15 },
+    { nama: "Monitor LED 24 Inch", harga: 1800000, stok: 8 }
+];
+
+// Otomatis isi harga saat nama barang dipilih
+document.getElementById('inpNama').addEventListener('input', function() {
+    const namaDipilih = this.value;
+    const barang = daftarStokBarang.find(b => b.nama === namaDipilih);
+    if (barang) {
+        document.getElementById('inpHarga').value = barang.harga;
+    }
+});
+
 /**
  * TechStore Kasir — script.js
  * Seluruh logika transaksi: keranjang, kalkulasi, struk, UI
