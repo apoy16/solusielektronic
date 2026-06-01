@@ -45,12 +45,19 @@
             <div class="field full-width">
               <label for="inpNama">Nama Barang</label>
               <input
-                type="text"
-                id="inpNama"
-                placeholder="Contoh: Laptop ASUS VivoBook 14"
-                autocomplete="off"
-              >
-            </div>
+  type="text"
+  id="inpNama"
+  placeholder="Contoh: Laptop ASUS VivoBook 14"
+  autocomplete="off"
+  list="list-barang"
+>
+<datalist id="list-barang">
+  <option value="Laptop ASUS VivoBook 14">
+  <option value="Mouse Wireless Logi">
+  <option value="Keyboard Mechanical">
+  <option value="Monitor LED 24 Inch">
+</datalist>
+
             <div class="field">
               <label for="inpHarga">Harga Satuan (Rp)</label>
               <input
