@@ -14,6 +14,7 @@ document.getElementById('inpNama').addEventListener('input', function() {
     }
 });
 
+
 /**
  * TechStore Kasir — script.js
  * Seluruh logika transaksi: keranjang, kalkulasi, struk, UI
